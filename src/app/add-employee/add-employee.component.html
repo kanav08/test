@@ -1,0 +1,17 @@
+<div >
+  <p>Please details for New Employee :</p>
+  <form (ngSubmit)="addEmployee()" [formGroup]="form">
+    
+  Name:<input type="text" [(ngModel)]="employee.name" name="name" formControlName="name" > <br/>
+  
+  Address:<input type="text" [(ngModel)]="employee.address" name="address" formControlName="address"> <br/>
+  Salary: <input type="text" [(ngModel)]="employee.salary" name="salary"  formControlName="salary" > <br/>
+
+  <button type="submit" [disabled]="!form.valid">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="addResponse"> 
+  Details added successfully!!
+   
+</div>

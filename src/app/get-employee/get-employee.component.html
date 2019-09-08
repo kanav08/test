@@ -1,0 +1,49 @@
+<H3>Employee Detail Form</H3>
+
+
+<div *ngIf="this.response" >
+    <table >
+      <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Salary</th>
+            <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let character of this.response">
+          <td>{{ character.id }}</td>
+          <td>{{ character.name }}</td>
+          <td>{{ character.address }}</td>
+          <td>{{ character.salary }}</td>
+          <td><button (click)="deleteRecord(character.id )">Delete</button>
+            <button (click)="editRecord(character.id )">Edit</button>
+        </tr>
+      </tbody>
+    </table>
+  
+</div>
+
+
+<div *ngIf="deleteResponse">
+  <p>Record deleted successfully!!</p>
+</div>
+<div *ngIf="editResponse">
+  <p>Record editted successfully!!</p>
+
+</div>
+
+<div *ngIf="editFormDiv">
+  <p>Please enter below details to edit Employee with Id {{employeeid}}:</p>
+  <form (ngSubmit)="editEmployee(employeeid)">
+    
+  
+  Name:<input type="text" [(ngModel)]="employee.name" name="name"> <br/>
+  Address:<input type="text" [(ngModel)]="employee.address" name="address"> <br/>
+  Salary:<input type="text" [(ngModel)]="employee.salary" name="salary"> <br/>
+
+  <button type="submit">Submit</button>
+  </form>
+</div>
