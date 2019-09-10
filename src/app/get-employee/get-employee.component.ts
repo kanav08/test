@@ -10,12 +10,16 @@ import { Employee } from './employee';
 export class GetEmployeeComponent implements OnInit {
 response:any;
 employeeid:Number;
+empName:String;
+empAddress:String;
+empSalary:Number;
 editResponse:boolean=false;
 editFormDiv:boolean=false;
 employee:Employee=new Employee();
 deleteResponse:boolean=false;
-
-
+mainTableresponse:boolean=true;
+addLinkFlag:boolean=true;
+getEmplFlag:boolean=false;
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
@@ -35,24 +39,32 @@ deleteResponse:boolean=false;
   obs.subscribe(()=>{
     
   });
-  debugger
+  
   
   
 var index = this.response.findIndex(obj => obj.id==id);
 this.response.splice(index,1);
 
    this.deleteResponse=true;
+   this.editResponse=false;
+   this.editFormDiv=false;
  }
 
-editRecord(id:Number){
-  this.employeeid=id;
+editRecord(employee){
+
+  this.employeeid=employee.id;
+ this.addLinkFlag=false;
   this.editFormDiv=true;
   this.editResponse=false;
   this.deleteResponse=false;
-  this.employee=new Employee();
+  this.employee=employee;
+  this.mainTableresponse=false;
 }
 editEmployee(id:number){
   this.editResponse=true;
+  this.addLinkFlag=true;
+  this.getEmplFlag=true;
+  this.mainTableresponse=true;
   this.editFormDiv=false;
   this.employee.id=id;
   let obs=this.http.put('http://localhost:8090/employee/',this.employee);

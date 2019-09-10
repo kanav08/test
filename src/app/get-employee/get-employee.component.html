@@ -1,11 +1,12 @@
-<H3>Employee Detail Form</H3>
+<H3 >
+  Employee Form</H3>
 
-
+<div *ngIf="mainTableresponse">
 <div *ngIf="this.response" >
-    <table >
+    <table border="1">
       <thead>
           <tr>
-            <th>ID</th>
+               <th>ID</th>
             <th>Name</th>
             <th>Address</th>
             <th>Salary</th>
@@ -14,36 +15,43 @@
       </thead>
       <tbody>
         <tr *ngFor="let character of this.response">
-          <td>{{ character.id }}</td>
-          <td>{{ character.name }}</td>
-          <td>{{ character.address }}</td>
-          <td>{{ character.salary }}</td>
+          <td>
+            <font color="brown">{{ character.id }}</font></td>
+          <td><font color="brown">{{ character.name }}</font></td>
+          <td><font color="brown">{{ character.address }}</font></td>
+          <td><font color="brown">{{ character.salary }}</font></td>
           <td><button (click)="deleteRecord(character.id )">Delete</button>
-            <button (click)="editRecord(character.id )">Edit</button>
+            <button (click)="editRecord(character)">Edit</button>
         </tr>
       </tbody>
     </table>
   
 </div>
 
-
+</div>
 <div *ngIf="deleteResponse">
   <p>Record deleted successfully!!</p>
 </div>
 <div *ngIf="editResponse">
-  <p>Record editted successfully!!</p>
+  <p>Record with Id {{employeeid}} editted successfully!!</p>
 
 </div>
 
-<div *ngIf="editFormDiv">
+<div *ngIf="editFormDiv" class="container">
   <p>Please enter below details to edit Employee with Id {{employeeid}}:</p>
   <form (ngSubmit)="editEmployee(employeeid)">
     
   
-  Name:<input type="text" [(ngModel)]="employee.name" name="name"> <br/>
+  Name:<input type="text" [(ngModel)]="employee.name" name="name" > <br/>
   Address:<input type="text" [(ngModel)]="employee.address" name="address"> <br/>
   Salary:<input type="text" [(ngModel)]="employee.salary" name="salary"> <br/>
-
-  <button type="submit">Submit</button>
+<br/>
+  <button type="submit">Update</button>
   </form>
+</div>
+
+<div *ngIf="addLinkFlag">
+  <br/>
+  <br/>
+  <a [routerLink]="['/addEmployee']">Add Employee</a>
 </div>

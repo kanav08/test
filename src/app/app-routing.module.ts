@@ -9,7 +9,7 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { GetEmployeeComponent } from './get-employee/get-employee.component';
 const routes:Route[]=[
-    //{path:'',redirectTo:'/home',pathMatch:'full' },
+    {path:'',redirectTo:'/getEmployee',pathMatch:'full' },
     {path:'home',component:HomeComponent},
     {path:'settings',component:SettingsComponent,
     children:[
@@ -20,6 +20,7 @@ const routes:Route[]=[
 {path:'addEmployee',component:AddEmployeeComponent},
 {path:'edit',component:GetEmployeeComponent},
 {path:'getEmployee',component:GetEmployeeComponent},
+
     //{path:'**',component:ErrorComponent}
 ];
 @NgModule(

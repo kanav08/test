@@ -1,4 +1,4 @@
-<div >
+<div class="container" >
   <p>Please details for New Employee :</p>
   <form (ngSubmit)="addEmployee()" [formGroup]="form">
     
@@ -6,12 +6,20 @@
   
   Address:<input type="text" [(ngModel)]="employee.address" name="address" formControlName="address"> <br/>
   Salary: <input type="text" [(ngModel)]="employee.salary" name="salary"  formControlName="salary" > <br/>
-
+<br/>
   <button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
 </div>
 
+
 <div *ngIf="addResponse"> 
   Details added successfully!!
-   
+  
 </div>
+
+<div>
+
+    <br/>
+    <br/>
+  <a [routerLink]="['/getEmployee']">Get Employee Details</a>
+  </div>

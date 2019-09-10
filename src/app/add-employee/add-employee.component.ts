@@ -26,9 +26,11 @@ addResponse:boolean=false;
   addEmployee(){
     let obs=this.http.post('http://localhost:8090/save/',this.employee);
     obs.subscribe((response)=>{
-      this.addResponse=true;
+  
     });
-    location.reload();
+    //location.reload();
+    this.addResponse=true;
+    this.employee=new Employee();
      }
 
    
